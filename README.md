@@ -103,3 +103,50 @@ class Example
     }
 }
 ```
+
+
+###StreamWriter Class
+
+<a href=https://msdn.microsoft.com/en-us/library/system.io.streamwriter(v=vs.110).aspx>Implements a TextWriter for writing characters to a stream in a particular encoding.</a>
+
+The following example shows how to use a StreamWriter object to write a file that lists the directories on the C drive, and then uses a StreamReader object to read and display each directory name. A good practice is to use these objects in a using statement so that the unmanaged resources are correctly disposed. The using statement automatically calls Dispose on the object when the code that is using it has completed. The constructor used in this example is not supported for use in Windows Store Apps.
+
+```C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+
+namespace StreamReadWrite
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Get the directories currently on the C drive.
+            DirectoryInfo[] cDirs = new DirectoryInfo(@"c:\").GetDirectories();
+
+            // Write each directory name to a file.
+            using (StreamWriter sw = new StreamWriter("CDriveDirs.txt"))
+            {
+                foreach (DirectoryInfo dir in cDirs)
+                {
+                    sw.WriteLine(dir.Name);
+
+                }
+            }
+
+            // Read and show each line from the file.
+            string line = "";
+            using (StreamReader sr = new StreamReader("CDriveDirs.txt"))
+            {
+                while ((line = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            }
+        }
+    }
+}
+```
