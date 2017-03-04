@@ -32,7 +32,10 @@ Destructor
 
 ####This type implements the IDisposable interface. When you have finished using the type, you should dispose of it either directly or indirectly. To dispose of the type directly, call its Dispose method in a try/catch block. To dispose of it indirectly, use a language construct such as using (in C#) or Using (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the IDisposable interface topic.
 
-By default, a StreamReader is not thread safe. See <a href=>TextReader.Synchronized</a> for a thread-safe wrapper.
+By default, a StreamReader is not thread safe. See <a href=https://msdn.microsoft.com/en-us/library/system.io.textreader.synchronized(v=vs.110).aspx>TextReader.Synchronized</a> for a thread-safe wrapper.
+
+
+###To view the .NET Framework source code for this type, see the<a href=https://referencesource.microsoft.com/#mscorlib/system/io/streamreader.cs,b5fe1efcec14de32> Reference Source</a>. You can browse through the source code online, download the reference for offline viewing, and step through the sources (including patches and updates) during debugging; see instructions.
 
 
 The Read(Char[], Int32, Int32) and Write(Char[], Int32, Int32) method overloads read and write the number of characters specified by the count parameter. These are to be distinguished from BufferedStream.Read and BufferedStream.Write, which read and write the number of bytes specified by the count parameter. Use the BufferedStream methods only for reading and writing an integral number of byte array elements.
