@@ -27,7 +27,7 @@ Destructor
 
 
 
-###StreamReader Class
+###StreamReader Class (using System.IO)
 <a href=https://msdn.microsoft.com/en-us/library/system.io.streamreader(v=vs.110).aspx#Thread Safety>StreamReader</a> is designed for character input in a particular encoding, whereas the Stream class is designed for byte input and output. Use StreamReader for reading lines of information from a standard text file.
 
 ####This type implements the IDisposable interface. When you have finished using the type, you should dispose of it either directly or indirectly. To dispose of the type directly, call its Dispose method in a try/catch block. To dispose of it indirectly, use a language construct such as using (in C#) or Using (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the IDisposable interface topic.
@@ -105,7 +105,7 @@ class Example
 ```
 
 
-###StreamWriter Class
+###StreamWriter Class  (using System.IO)
 
 <a href=https://msdn.microsoft.com/en-us/library/system.io.streamwriter(v=vs.110).aspx>Implements a TextWriter for writing characters to a stream in a particular encoding.</a>
 
@@ -146,6 +146,49 @@ namespace StreamReadWrite
                     Console.WriteLine(line);
                 }
             }
+        }
+    }
+}
+```
+
+
+###TextReader Class
+
+```C#
+using System;
+using System.Windows;
+using System.IO;
+using System.Text;
+
+namespace WpfApplication
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string filename = @"C:\Example\existingfile.txt";
+            char[] result;
+            StringBuilder builder = new StringBuilder();
+
+            using (StreamReader reader = File.OpenText(filename))
+            {
+                result = new char[reader.BaseStream.Length];
+                await reader.ReadAsync(result, 0, (int)reader.BaseStream.Length);
+            }
+
+            foreach (char c in result)
+            {
+                if (char.IsLetterOrDigit(c) || char.IsWhiteSpace(c))
+                {
+                    builder.Append(c);
+                }
+            }
+            FileOutput.Text = builder.ToString();
         }
     }
 }
