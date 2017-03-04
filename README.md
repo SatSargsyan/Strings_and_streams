@@ -25,6 +25,21 @@ Destructor
 
 
 
+
+
+###StreamReader Class
+<a href=https://msdn.microsoft.com/en-us/library/system.io.streamreader(v=vs.110).aspx#Thread Safety>StreamReader</a> is designed for character input in a particular encoding, whereas the Stream class is designed for byte input and output. Use StreamReader for reading lines of information from a standard text file.
+
+####This type implements the IDisposable interface. When you have finished using the type, you should dispose of it either directly or indirectly. To dispose of the type directly, call its Dispose method in a try/catch block. To dispose of it indirectly, use a language construct such as using (in C#) or Using (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the IDisposable interface topic.
+
+By default, a StreamReader is not thread safe. See <a href=>TextReader.Synchronized</a> for a thread-safe wrapper.
+
+
+The Read(Char[], Int32, Int32) and Write(Char[], Int32, Int32) method overloads read and write the number of characters specified by the count parameter. These are to be distinguished from BufferedStream.Read and BufferedStream.Write, which read and write the number of bytes specified by the count parameter. Use the BufferedStream methods only for reading and writing an integral number of byte array elements.
+
+####When reading from a Stream, it is more efficient to use a buffer that is the same size as the internal buffer of the stream.
+
+####The following example uses an instance of StreamReader to read text from a file. The constructor used in this example is not supported for use in Windows Store Apps.
 ```C#
 using System;
 using System.IO;
@@ -57,7 +72,7 @@ class Test
     }
 }
 ```
-####The following example instantiates a StreamReader object and calls its ReadAsync method to read a file asynchronously.
+####The following example instantiates a StreamReader object and calls its <a href=https://msdn.microsoft.com/en-us/library/system.io.streamreader.readasync(v=vs.110).aspx>ReadAsync </a>method to read a file asynchronously.
 
 ```C#
 using System;
