@@ -37,14 +37,15 @@ By default, a StreamReader is not thread safe. See
 TextReader.Synchronized</a> for a thread-safe wrapper.
 
 
-### To view the .NET Framework source code for this type, see the<a href=https://referencesource.microsoft.com/#mscorlib/system/io/streamreader.cs,b5fe1efcec14de32> Reference Source</a>. You can browse through the source code online, download the reference for offline viewing, and step through the sources (including patches and updates) during debugging; see instructions.
+### To view the .NET Framework source code for this type, see the
+<a href=https://referencesource.microsoft.com/#mscorlib/system/io/streamreader.cs,b5fe1efcec14de32> Reference Source</a>. You can browse through the source code online, download the reference for offline viewing, and step through the sources (including patches and updates) during debugging; see instructions.
 
 
 The Read(Char[], Int32, Int32) and Write(Char[], Int32, Int32) method overloads read and write the number of characters specified by the count parameter. These are to be distinguished from BufferedStream.Read and BufferedStream.Write, which read and write the number of bytes specified by the count parameter. Use the BufferedStream methods only for reading and writing an integral number of byte array elements.
 
 #### When reading from a Stream, it is more efficient to use a buffer that is the same size as the internal buffer of the stream.
 
-####The following example uses an instance of StreamReader to read text from a file. The constructor used in this example is not supported for use in Windows Store Apps.
+#### The following example uses an instance of StreamReader to read text from a file. The constructor used in this example is not supported for use in Windows Store Apps.
 ```C#
 using System;
 using System.IO;
